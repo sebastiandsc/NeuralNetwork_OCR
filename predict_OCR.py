@@ -157,8 +157,8 @@ char = segment_characters(imagenPlate)
 
 from keras_preprocessing.image import img_to_array
 
-modelo='C:/Users/Sebastian/Desktop/REDES NEURONALES/modelo/modelo5.h5'
-pesos='C:/Users/Sebastian/Desktop/REDES NEURONALES/modelo/pesos5.h5'
+modelo='C:/Users/Sebastian/Desktop/REDES NEURONALES/modelo/OCR_Model.h5'
+pesos='C:/Users/Sebastian/Desktop/REDES NEURONALES/modelo/OCR_weights.h5'
 model = load_model(modelo)  
 model.load_weights(pesos)
 
