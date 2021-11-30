@@ -88,10 +88,9 @@ Model.compile(loss='categorical_crossentropy',optimizer=optimizers.Adam(lr=0.000
 History = Model.fit_generator(imagen_entrenamiento, epochs = 80, 
                     steps_per_epoch = 864//32, 
                     validation_data=imagen_validacion)
-"""
+
 dir = 'C:/Users/Sebastian/Desktop/REDES NEURONALES'
 if not os.path.exists(dir):
     os.mkdir(dir)
 Model.save('./modelo/OCR_Model.h5')
 Model.save_weights('./modelo/OCR_weights.h5')
-"""
