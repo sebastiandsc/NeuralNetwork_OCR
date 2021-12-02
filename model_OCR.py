@@ -17,8 +17,8 @@ import matplotlib.pyplot as plt
 
 K.clear_session()
     
-Train_Data = "C:/Users/Sebastian/Desktop/REDES NEURONALES/data/train"
-Val_data = "C:/Users/Sebastian/Desktop/REDES NEURONALES/data/val"
+Train_Data = "./data/train"
+Val_data = "./data/val"
 
 
 Train_dataGen = ImageDataGenerator(
@@ -88,7 +88,7 @@ Model.summary()
 
 Model.compile(loss='categorical_crossentropy',optimizer=optimizers.Adam(lr=0.0001),metrics=('accuracy'))
 
-History = Model.fit_generator(train_data_img, epochs = 120, 
+History = Model.fit_generator(train_data_img, epochs = 180, 
                     steps_per_epoch = 864//32, 
                     validation_data=val_data_img)
 
@@ -114,12 +114,23 @@ plt.xlabel("Epochs")
 plt.ylabel("Loss")
 plt.title("Train and Validation Losses Over Epochs", fontsize=14)
 plt.legend()
-plt.grid()
+#plt.grid()
+plt.figure()
 plt.show()
 
+plt.plot(History.history['accuracy'])
+plt.plot(History.history['val_accuracy'])
+plt.title('model accuracy')
+plt.ylabel('accuracy')
+plt.xlabel('epoch')
+plt.legend(['train', 'test'], loc='upper left')
+plt.grid()
+plt.figure()
+plt.show()
 
-dir = 'C:/Users/Sebastian/Desktop/REDES NEURONALES'
-if not os.path.exists(dir):
-    os.mkdir(dir)
-Model.save('./modelo/OCR_Model.h5')
-Model.save_weights('./modelo/OCR_weights.h5')
+#Save model
+
+dir = './Model'
+if not os.path.exists(dir): os.mkdir(dir)
+Model.save('./Model/OCR_Model.h5')
+Model.save_weights('./Model/OCR_weights.h5')
